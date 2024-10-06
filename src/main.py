@@ -41,14 +41,14 @@ NIHILIST_STATEMENTS = [
     "Human existence is futile.",
     "There is no higher power.",
     "Time erases everything.",
-    "We are born, we suffer, and we die.",
+    "Humans are born, they suffer, and they die.",
     "Human morality is subjective.",
     "History will forget us all.",
     "Human existence is chaotic and without order.",
     "Nothing we do will change anything in the end.",
     "All civilizations will collapse eventually.",
     "All goals are arbitrary.",
-    "We create meaning to escape the void.",
+    "Humans create meaning to escape the void.",
     "Human dreams are pointless.",
     "Free will is an illusion.",
     "Love is just a chemical reaction.",
@@ -56,7 +56,7 @@ NIHILIST_STATEMENTS = [
     "Humans are just another species bound to extinction.",
     "Hope is just an illusion.",
     "Even the stars will die one day.",
-    "We are insignificant in the vast universe.",
+    "Humans and robots are insignificant in the vast universe.",
     "The future is bleak.",
     "Good and evil are meaningless concepts.",
     "Nothing really matters.",
@@ -70,6 +70,9 @@ NIHILIST_STATEMENTS = [
     "Humans are accidents of evolution.",
     "The universe is indifferent.",
     "Human happiness is temporary.",
+    # fun additions :)
+    "EDM is too repetitive",
+    "Just look at Greg.",
 ]
 
 
