@@ -49,6 +49,7 @@ class Servo:
         self.motor_channel = motor_channel
         self.min_angle = min_angle
         self.max_angle = max_angle
+        self.destination_angle = min_angle + max_angle - min_angle / 2
 
         self.thread = threading.Thread(target=self._thread)
         self.thread.start()
@@ -57,10 +58,10 @@ class Servo:
     def current_angle(self):
         try:
             return servo_kit.servo[self.motor_channel].angle
-        except Exception:
+        except OSError as error:
             # Was getting intermittent exception from adafruit servo kit
             # originating from i2c_bus.read_i2c_block_data()
-            log.error(f"Exception caught in current_angle: {traceback.format_exc()}")
+            log.error(f"OSError caught in current_angle: {error}\n")
             # just pretend we are at the destination (stop moving) and carry on
             return self.destination_angle
 
