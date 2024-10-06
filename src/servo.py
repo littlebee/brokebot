@@ -95,9 +95,10 @@ class Servo:
 
     def wait_for_motor_stopped(self):
         if DEBUG_MOTORS:
-            log.info("waiting on stopped event on channel {self.motor_channel}")
+            log.info(f"waiting on stopped event on channel {self.motor_channel}")
         self.stopped_event.wait()
-        # log.info(f"after wait: {self.stopped_event.is_set()}")
+        if DEBUG_MOTORS:
+            log.info(f"after wait: {self.motor_channel} {self.stopped_event.is_set()}")
 
     def _thread(self):
         log.info(f"Starting servo movement thread. {self.current_angle}")
@@ -121,7 +122,7 @@ class Servo:
 
             if not self._step_move(direction):
                 if DEBUG_MOTORS:
-                    log.info("setting stopped event on channel {self.motor_channel}")
+                    log.info(f"setting stopped event on channel {self.motor_channel}")
                 self.stopped_event.set()
                 self.pause_event.clear()
 
