@@ -39,7 +39,7 @@ def limit_angle(angle, min_angle, max_angle):
 
 
 class Servo:
-    def __init__(self, motor_channel, min_angle=0, max_angle=270):
+    def __init__(self, motor_channel, min_angle=0, max_angle=180):
         self.thread = None  # background thread that steps motor to destination
         self.pause_event = threading.Event()
         self.stopped_event = threading.Event()
