@@ -74,10 +74,12 @@ class Servo:
         self._step_delay = value
 
     def move_to(self, angle):
-        if DEBUG_MOTORS:
-            log.info(f"move_to {self.motor_channel}, {self.current_angle}, {angle}")
-
         self.destination_angle = limit_angle(angle, self.min_angle, self.max_angle)
+        if DEBUG_MOTORS:
+            log.info(
+                f"move_to {self.motor_channel}, {self.current_angle}, {angle}, {self.destination_angle}, {self.min_angle}, {self.max_angle}"
+            )
+
         self.stopped_event.clear()
         self.resume()
 
@@ -110,8 +112,6 @@ class Servo:
         )
         time.sleep(0.5)
 
-        self.destination_angle = self.current_angle
-
         # start running
         self.pause_event.set()
         while not self.force_stop:
@@ -120,6 +120,10 @@ class Servo:
             if self.current_angle > self.destination_angle:
                 direction = -1
 
+            if DEBUG_MOTORS:
+                log.info(
+                    f"thread loop: direction={direction} {self.current_angle} {self.destination_angle} "
+                )
             if not self._step_move(direction):
                 if DEBUG_MOTORS:
                     log.info(f"setting stopped event on channel {self.motor_channel}")
